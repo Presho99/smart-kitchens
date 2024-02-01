@@ -1,0 +1,29 @@
+.icons{
+  
+    width: 70%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icon-container{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   transition: 0.3s ease-in;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.icon-container:hover{
+    background-color: #A5A5A5;
+    border-radius: 50%;
+}
+
+.itself{
+    font-size: 28px;
+   
+}

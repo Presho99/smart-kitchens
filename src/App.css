@@ -23,6 +23,9 @@ background-color: pink;
 
 .left .bottom{
   background-color: #CDCDCD;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .right{
   background-color: red;
