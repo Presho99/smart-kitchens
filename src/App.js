@@ -1,5 +1,6 @@
 
 import './App.css';
+import List from './components/List';
 import Icons from './components/Icons';
 
 function App() {
@@ -7,7 +8,9 @@ function App() {
     <div className="App">
       <div className='left'>
         <div className='top'></div>
-        <div className='middle'></div>
+        <div className='middle'>
+          <List/>
+        </div>
         <div className='bottom'>
           <Icons/>
         </div>

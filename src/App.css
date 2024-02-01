@@ -1,7 +1,7 @@
 .App{
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  /* overflow: hidden; */
   margin: 0;
   padding: 0;
   display: grid;
@@ -19,6 +19,9 @@ background-color: pink;
 
 .left .middle{
   background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .left .bottom{

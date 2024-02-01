@@ -1,0 +1,21 @@
+.list{
+    width: 70%;
+    height: 80%;
+    background-color: blueviolet;
+}
+
+.list ul{
+    display: flex;
+
+}
+
+.list ul li{
+    list-style-type: none;
+    background-color: aqua;
+}
+
+.image{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
