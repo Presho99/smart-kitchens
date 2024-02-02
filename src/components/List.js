@@ -5,6 +5,14 @@ import "../components/List.css";
 
 function List() {
   const [foodsData, setFoodsData] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const handleArrowClick = (direction) => {
+    const newIndex = direction === "right" 
+    ? (activeIndex + 1) % foodsData.length 
+    : (activeIndex - 1 + foodsData.length) % foodsData.length 
+    setActiveIndex(newIndex)
+  }
 
   useEffect(() => {
     fetch("https://presho99.github.io/skfoods/foods")
@@ -15,18 +23,18 @@ function List() {
   return (
     <div className="list">
       <div  className="list-container">
-      <FontAwesomeIcon icon={faAngleLeft} className="arrow"/>
+      <FontAwesomeIcon icon={faAngleLeft} className="arrow" onClick={()=> handleArrowClick("left")}/>
         <div className="itself-box">
          
-          {foodsData.map((food) => (
-            <div key={food.id} className="food-itself">
+          {foodsData.map((food, index) => (
+            <div key={food.id} className={`food-itself ${index === activeIndex ? "active" : ""}`}>
               <img src={food.avatar} className="image" />
               <p className="name">{food.name}</p>
             </div>
           ))}
          
         </div>
-        <FontAwesomeIcon icon={faAngleRight} className="arrow"/>
+        <FontAwesomeIcon icon={faAngleRight} className="arrow" onClick={()=> handleArrowClick("right")}/>
       </div>
     </div>
   );

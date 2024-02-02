@@ -8,7 +8,7 @@
     font-family: "Inter", sans-serif;
     align-items: center;
     justify-content: center;
-    background-color: blueviolet;
+    background-color: #CDCDCD;
 }
 
 .list-container{
@@ -16,7 +16,7 @@
     width: 80%;
     justify-content: space-between;
     align-items: center;
-    background-color: chocolate;
+   
 }
 
 .arrow{
@@ -28,7 +28,7 @@
 
 .itself-box{
     display: flex;
-    background-color: blue;
+    /* background-color: blue; */
     height: 100%;
     width: 80%;
     align-items: center;
@@ -38,7 +38,9 @@
 
 .food-itself{
     list-style-type: none;
-    background-color: aqua;
+    padding: 10px;
+    background-color: #CDCDCD;
+    transition: background-color .6s ease;
     cursor: pointer;
     height: 100%;
     width: 20%;
@@ -46,8 +48,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    border-radius: 20px;
 }
 
+.food-itself.active{
+    background-color: #E2E0E2;
+}
 .image{
     width: 100px;
     height: 100px;
@@ -55,11 +62,12 @@
 }
 
 .name{
-    background-color: pink;
+    
     width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     line-height: 18px;
+    font-weight: 600;
 }
