@@ -41,6 +41,9 @@ function Review() {
         </div>
         <div className='rating'>
             <div className='rating-box' style={{backgroundColor: getRandomColor()}}>
+                <div className='number'>
+                    <h2></h2>
+                </div>
                 
             </div>
         </div>
