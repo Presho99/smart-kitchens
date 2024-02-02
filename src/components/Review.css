@@ -7,12 +7,13 @@
 }
 
 .review-nav{
-background-color: aquamarine;
+/* background-color: aquamarine; */
 height: 10%;
 width: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
+margin-bottom: 20px;
 }
 
 .review-icon{
@@ -32,7 +33,8 @@ align-items: center;
     display: flex;
     /* background-color: pink; */
     align-items: center;
-    justify-content: space-around; 
+    justify-content: space-around;
+    margin-bottom: 20px; 
  
 }
 
@@ -43,4 +45,11 @@ align-items: center;
 
 .active{
     font-weight: bold;
+}
+
+.rating-box{
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background-color: red;
 }
