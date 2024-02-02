@@ -2,6 +2,7 @@
 import './App.css';
 import List from './components/List';
 import Icons from './components/Icons';
+import Review from './components/Review';
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
           <Icons/>
         </div>
       </div>
-      <div className='right'></div>
+      <div className='right'>
+<Review/>
+      </div>
       
      
     </div>

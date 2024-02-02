@@ -35,6 +35,7 @@ background-color: pink;
   align-items: center;
 }
 .right{
-  background-color: red;
+  background-color: #CDCDCD;
+  padding: 20px;
 }
 
