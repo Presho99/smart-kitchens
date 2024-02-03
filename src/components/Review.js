@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faBars, faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../components/Review.css'
 
@@ -7,17 +7,23 @@ import '../components/Review.css'
 
 function Review({activeIndex, foodsData, currentColor}) {
     const [activeTab, setActiveTab] = useState('Overview')
+    const [likeWidth, setLikeWidth] = useState(50)
+    const [likeText, setLikeText] = useState(`${Math.floor(Math.random() * (101 -36 + 1))+ 36} Likes`)
+    const [likesVisible,setLikesVisible] = useState(false)
+    const [thumbColor, setThumbColor] = useState('#fff')
    
     
-
-  
-
-    // useEffect(() => {
-    //     const colorChangeInterval = setInterval(() => {
-    //         setCurrentColor(getRandomColor())
-    //     }, 3000)
-    //     return () => clearInterval(colorChangeInterval)
-    // }, [])
+const handleLikeClick = () => {
+    setLikeWidth(150)
+    setLikeText(`${Math.floor(Math.random() * (101 -36 + 1)) + 36}  Likes`)
+    setLikesVisible(true)
+    setThumbColor((prevColor) => (prevColor === '#000' ? '#fff' : '#000'))
+    setTimeout(() => {
+        setLikeWidth(50)
+        setLikesVisible(false)
+    }, 1000)
+}
+   
 
     const handleTabClick = (tab) => {
         setActiveTab(tab)
@@ -44,7 +50,20 @@ function Review({activeIndex, foodsData, currentColor}) {
             </div>
             <div className='bio-box'>
                 <h3>{foodsData[activeIndex]?.chef}</h3>
-                <p></p>
+                <p>{foodsData[activeIndex]?.location}</p>
+                <div className='desc'>
+                    <p>{foodsData[activeIndex]?.bio}</p>
+                </div>
+            </div>
+            <div className='thumb-box'> 
+                <div className='like' onClick={handleLikeClick} style={{width: `${likeWidth}px`}}>
+                    <FontAwesomeIcon icon={faThumbsUp} className="thumbs" style={{color: thumbColor}}/>
+                    {likesVisible && <span className='like-text'>{likeText}</span>}
+                </div>
+                <div className='unlike'>
+                    <FontAwesomeIcon icon={faThumbsDown} className="thumbs"/>
+                </div>
+
             </div>
         </div>
     </div>

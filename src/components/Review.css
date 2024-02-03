@@ -53,3 +53,50 @@ margin-bottom: 20px;
     border-radius: 20px;
     background-color: red;
 }
+
+.bio-box{
+    /* background-color: aqua; */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.bio-box h3{
+    margin-bottom: 10px;
+}
+
+.desc p{
+    margin-top: 10px;
+}
+
+.thumb-box{
+    display: flex;
+  
+
+}
+
+.like, .unlike{
+    background-color: #cdcdcd;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    transition: width .3s, border-radius .3s;
+}
+
+.unlike{
+    margin-left: 20px;
+    
+}
+
+.thumbs{
+    font-size: 24px;
+    color: #fff;
+
+}
+
+.like-text{
+    margin-left: 10px;
+}
