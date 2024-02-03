@@ -3,25 +3,21 @@ import { faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../components/Review.css'
 
-const getRandomColor = () => {
-    const colors = ['#F5CE64', '#FAAA67', '#F7B0BC', '#BBCBA1']
-    const randomIndex = Math.floor(Math.random() * colors.length)
-    return colors[randomIndex]
-}
 
-function Review() {
+
+function Review({activeIndex, foodsData, currentColor}) {
     const [activeTab, setActiveTab] = useState('Overview')
-    const [currentColor, setCurrentColor] = useState(getRandomColor())
+   
     
 
   
 
-    useEffect(() => {
-        const colorChangeInterval = setInterval(() => {
-            setCurrentColor(getRandomColor())
-        }, 3000)
-        return () => clearInterval(colorChangeInterval)
-    }, [])
+    // useEffect(() => {
+    //     const colorChangeInterval = setInterval(() => {
+    //         setCurrentColor(getRandomColor())
+    //     }, 3000)
+    //     return () => clearInterval(colorChangeInterval)
+    // }, [])
 
     const handleTabClick = (tab) => {
         setActiveTab(tab)
@@ -40,11 +36,15 @@ function Review() {
             <p className={activeTab ==='Ingredients' ? 'active' : ''} onClick={() => handleTabClick('Ingredients')}>Ingredients </p>
         </div>
         <div className='rating'>
-            <div className='rating-box' style={{backgroundColor: getRandomColor()}}>
+            <div className='rating-box' style={{backgroundColor: currentColor}}>
                 <div className='number'>
-                    <h2></h2>
+                    <h2>{foodsData[activeIndex]?.rating}</h2>
                 </div>
                 
+            </div>
+            <div className='bio-box'>
+                <h3>{foodsData[activeIndex]?.chef}</h3>
+                <p></p>
             </div>
         </div>
     </div>

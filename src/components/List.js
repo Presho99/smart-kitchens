@@ -3,23 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import "../components/List.css";
 
-function List() {
-  const [foodsData, setFoodsData] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(0)
-
+function List({setActiveIndex, foodsData, activeIndex, setRatingBoxColor}) {
+ 
   const handleArrowClick = (direction) => {
     const newIndex = direction === "right" 
     ? (activeIndex + 1) % foodsData.length 
     : (activeIndex - 1 + foodsData.length) % foodsData.length 
     setActiveIndex(newIndex)
+    setRatingBoxColor()
+    
   }
 
-  useEffect(() => {
-    fetch("https://presho99.github.io/skfoods/foods")
-      .then((response) => response.json())
-      .then((data) => setFoodsData(data.foodsData))
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  
   return (
     <div className="list">
       <div  className="list-container">
