@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { faMagnifyingGlass, faBars, faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faBars, faThumbsUp, faThumbsDown, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../components/Review.css'
 
@@ -46,6 +46,7 @@ const handleLikeClick = () => {
                 <div className='number'>
                     <h2>{foodsData[activeIndex]?.rating}</h2>
                 </div>
+                <FontAwesomeIcon icon={faStar}/>
                 
             </div>
             <div className='bio-box'>
