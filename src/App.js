@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Bezier from "./components/Bezier";
+// import Curve from "./components/Curve";
 import List from "./components/List";
 import Icons from "./components/Icons";
 import Review from "./components/Review";
@@ -29,7 +31,10 @@ function App() {
   return (
     <div className="App">
       <div className="left">
-        <div className="top"></div>
+        <div className="top">
+          <Bezier/>
+          {/* <Curve foodsData={foodsData} activeIndex={activeIndex}/>   */}
+        </div>
         <div className="middle">
           <List
             foodsData={foodsData}

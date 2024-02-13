@@ -1,0 +1,27 @@
+.curve{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* overflow: hidden; */
+    position: relative;
+}
+
+.ring{
+    background-color: transparent;
+    left: 0px;
+    top: 50px;
+    width: 200px;
+    height: 200px;
+    border: 10px solid red;
+    border-radius: 50%;
+    position: absolute;   
+}
+
+.ring-image{
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    
+}
