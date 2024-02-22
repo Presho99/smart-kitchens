@@ -1,0 +1,52 @@
+.bezier-container{
+    display: flex;
+}
+
+.bezier-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: purple; */
+    width: 50%;
+}
+
+.name-box{
+    /* background: red; */
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.light{
+    font-size: 39px;
+    text-transform: uppercase;
+    font-weight: 200;
+}
+
+.dark{
+    font-size: 55px;
+    text-transform: uppercase;
+}
+
+.bezier-icons{
+    display: flex;
+    margin-top: 20px;
+    /* background-color: pink; */
+    width: 100%;
+    height: 5%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bezier-icons .icon{
+display: flex;
+cursor: pointer;
+}
+
+.lefty{
+    margin-right: 10px;
+}

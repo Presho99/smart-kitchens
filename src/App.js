@@ -16,11 +16,16 @@ function App() {
   const [foodsData, setFoodsData] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [currentColor, setCurrentColor] = useState(getRandomColor())
+  const [activeImageUrl, setActiveImageUrl] = useState('')
+  const [activeName, setActiveName] = useState('')
 
   useEffect(() => {
     fetch("https://presho99.github.io/skfoods/foods")
       .then((response) => response.json())
-      .then((data) => setFoodsData(data.foodsData))
+      .then((data) => { 
+        setFoodsData(data.foodsData)
+        setActiveImageUrl(data.foodsData[0]?.avatar || "")
+      })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
@@ -28,19 +33,30 @@ function App() {
     setCurrentColor(getRandomColor)
   }
 
+  useEffect(() => {
+    setActiveImageUrl(foodsData[activeIndex]?.avatar || '')
+    setActiveName(foodsData[activeIndex]?.name || '')
+  }, [activeIndex, foodsData])
+
+ 
+
   return (
     <div className="App">
       <div className="left">
         <div className="top">
-          <Bezier/>
+          <Bezier activeImageUrl={activeImageUrl} foodsData={foodsData} activeIndex={activeIndex} activeName={activeName}/>
           {/* <Curve foodsData={foodsData} activeIndex={activeIndex}/>   */}
         </div>
         <div className="middle">
           <List
             foodsData={foodsData}
             activeIndex={activeIndex}
-            setActiveIndex={setActiveIndex}
+            setActiveIndex={(index) => {
+              setActiveIndex(index)
+              setActiveImageUrl(foodsData[index]?.avatar || "")
+            }}
             setRatingBoxColor={setRatingBoxColor}
+            // position={position}
           />
         </div>
         <div className="bottom">

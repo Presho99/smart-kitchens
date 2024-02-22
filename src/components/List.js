@@ -4,15 +4,20 @@ import React, { useEffect, useState } from "react";
 import "../components/List.css";
 
 function List({setActiveIndex, foodsData, activeIndex, setRatingBoxColor}) {
+  
  
   const handleArrowClick = (direction) => {
+   
     const newIndex = direction === "right" 
     ? (activeIndex + 1) % foodsData.length 
     : (activeIndex - 1 + foodsData.length) % foodsData.length 
     setActiveIndex(newIndex)
     setRatingBoxColor()
-    
+
   }
+
+
+  
 
   
   return (
