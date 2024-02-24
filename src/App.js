@@ -18,6 +18,18 @@ function App() {
   const [currentColor, setCurrentColor] = useState(getRandomColor())
   const [activeImageUrl, setActiveImageUrl] = useState('')
   const [activeName, setActiveName] = useState('')
+  const [gradientColors, setGradientColors] = useState(["#F5CE64", "#FAAA67"]); // Define gradient colors state
+
+  // Function to generate random linear gradient colors
+  const getRandomGradient = () => {
+    const colors = ['#F5CE64', '#FAAA67', '#F7B0BC', '#BBCBA1'];
+    const color1 = colors[Math.floor(Math.random() * colors.length)];
+    let color2 = colors[Math.floor(Math.random() * colors.length)];
+    while (color2 === color1) {
+      color2 = colors[Math.floor(Math.random() * colors.length)];
+    }
+    return [color1, color2];
+  };
 
   useEffect(() => {
     fetch("https://presho99.github.io/skfoods/foods")
@@ -44,12 +56,14 @@ function App() {
     <div className="App">
       <div className="left">
         <div className="top">
-          <Bezier activeImageUrl={activeImageUrl} foodsData={foodsData} activeIndex={activeIndex} activeName={activeName}/>
+          <Bezier activeImageUrl={activeImageUrl} foodsData={foodsData} activeIndex={activeIndex} activeName={activeName} gradientColors={gradientColors} getRandomGradient={getRandomGradient}/>
           {/* <Curve foodsData={foodsData} activeIndex={activeIndex}/>   */}
         </div>
         <div className="middle">
           <List
             foodsData={foodsData}
+            setGradientColors={setGradientColors}
+getRandomGradient={getRandomGradient}
             activeIndex={activeIndex}
             setActiveIndex={(index) => {
               setActiveIndex(index)

@@ -1,5 +1,10 @@
 .bezier-container{
     display: flex;
+    transition:  2s ease-in-out;
+}
+
+.canvas-transition{
+    transition: stroke 20s ease;
 }
 
 .bezier-name{

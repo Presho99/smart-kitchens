@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import "../components/List.css";
 
-function List({setActiveIndex, foodsData, activeIndex, setRatingBoxColor}) {
-  
- 
+function List({setActiveIndex, foodsData, activeIndex, setRatingBoxColor, setGradientColors, getRandomGradient}) {
+
+
   const handleArrowClick = (direction) => {
    
     const newIndex = direction === "right" 
@@ -13,6 +13,8 @@ function List({setActiveIndex, foodsData, activeIndex, setRatingBoxColor}) {
     : (activeIndex - 1 + foodsData.length) % foodsData.length 
     setActiveIndex(newIndex)
     setRatingBoxColor()
+    
+    setGradientColors(getRandomGradient())
 
   }
 
