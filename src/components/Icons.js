@@ -11,7 +11,7 @@ function Icons() {
     <div className='icons'>
        
         {iconNames.map((icon, index) => (
-             <div className='icon-container'>
+             <div className={index === 0 ? "container-active" : 'icon-container'}>
             <FontAwesomeIcon key={index} icon={icon} className="itself"/>
             </div>
         ))}
