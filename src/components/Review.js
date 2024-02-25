@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import { faMagnifyingGlass, faBars, faThumbsUp, faThumbsDown, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../components/Review.css'
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 
@@ -22,6 +24,16 @@ const handleLikeClick = () => {
         setLikeWidth(50)
         setLikesVisible(false)
     }, 1000)
+
+    toast.success('Added to liked recipes', {
+        position: "top-right",
+        autoClose:1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    })
 }
    
 
@@ -68,7 +80,7 @@ const handleLikeClick = () => {
             </div>
         </div>
     </div>
-
+<ToastContainer/>
     </div>
   )
 }
