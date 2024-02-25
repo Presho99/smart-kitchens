@@ -57,7 +57,7 @@ function List({setActiveIndex, foodsData, activeIndex, setRatingBoxColor, setGra
           {foodsData.map((food, index) => (
             <div key={food.id} className={`food-itself ${index === activeIndex ? "active" : ""}`}>
               <img src={food.avatar} className="image" />
-              <p className="name">{food.name}</p>
+              <p className="name">{food.name.split(' ').slice(0,2).join(' ')}</p>
             </div>
           ))}
          
