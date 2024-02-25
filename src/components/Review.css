@@ -28,6 +28,7 @@ margin-bottom: 20px;
     background-color: #E2E0E2;
     padding: 20px;
     border-radius: 30px;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
 }
 
 .box-nav{
@@ -50,14 +51,14 @@ margin-bottom: 20px;
 
 .rating-box{
     width: 85px;
-    height: 85px;
+    height: 95px;
     border-radius: 15px;
     background-color: red;
     position: relative;
     display: flex;
     flex-direction: column;
     padding: 10px;
-    
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
 }
 
 .rating-box .number{
@@ -83,6 +84,7 @@ align-items: center;
 
 .desc p{
     margin-top: 10px;
+    line-height: 25px;
 }
 
 .thumb-box{
@@ -101,6 +103,7 @@ align-items: center;
     justify-content: center;
     border-radius: 20px;
     transition: width .3s, border-radius .3s;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
 }
 
 .unlike{
