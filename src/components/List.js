@@ -3,8 +3,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import "../components/List.css";
 
-function List({setActiveIndex, foodsData, activeIndex, setRatingBoxColor, setGradientColors, getRandomGradient}) {
+function List({setActiveIndex, foodsData, activeIndex, setRatingBoxColor, setGradientColors, getRandomGradient, setTransitionTriggered}) {
+  // const [gradientColors, setGradientColors] = useState([getRandomGradient(), getRandomGradient()])
+  // const smoothColorTransition = (color1, color2, duration, callback) => {
+  //   const steps = 50
+  //   const delay = duration / steps
 
+  //   let step = 0
+  //   const interval = setInterval(() => {
+  //     const gradient = [
+  //       `linear-gradient(to right, ${color1}, ${color2})`,
+  //       `linear-gradient(to right, ${color2}, ${color1})`
+  //     ]
+
+  //     const currentGradient = gradient[step % 2]
+  //     step++
+
+  //     callback(currentGradient)
+
+  //     if(step === steps * 2){
+  //       clearInterval(interval)
+  //     }
+
+  //   }, delay)
+  // }
 
   const handleArrowClick = (direction) => {
    
@@ -13,8 +35,12 @@ function List({setActiveIndex, foodsData, activeIndex, setRatingBoxColor, setGra
     : (activeIndex - 1 + foodsData.length) % foodsData.length 
     setActiveIndex(newIndex)
     setRatingBoxColor()
+    setTransitionTriggered(true)
     
-    setGradientColors(getRandomGradient())
+   // Call getRandomGradient to get the new gradient colors
+   const newGradientColors = getRandomGradient();
+   // Set the new gradient colors with a transition duration of 2 seconds
+   setGradientColors(newGradientColors);
 
   }
 

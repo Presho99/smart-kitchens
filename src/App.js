@@ -7,22 +7,23 @@ import Icons from "./components/Icons";
 import Review from "./components/Review";
 
 const getRandomColor = () => {
-  const colors = ['#F5CE64', '#FAAA67', '#F7B0BC', '#BBCBA1']
-  const randomIndex = Math.floor(Math.random() * colors.length)
-  return colors[randomIndex]
-}
+  const colors = ["#F5CE64", "#FAAA67", "#F7B0BC", "#BBCBA1"];
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+};
 
 function App() {
   const [foodsData, setFoodsData] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [currentColor, setCurrentColor] = useState(getRandomColor())
-  const [activeImageUrl, setActiveImageUrl] = useState('')
-  const [activeName, setActiveName] = useState('')
+  const [currentColor, setCurrentColor] = useState(getRandomColor());
+  const [activeImageUrl, setActiveImageUrl] = useState("");
+  const [activeName, setActiveName] = useState("");
   const [gradientColors, setGradientColors] = useState(["#F5CE64", "#FAAA67"]); // Define gradient colors state
+  const [transitionTriggered, setTransitionTriggered] = useState(false);
 
   // Function to generate random linear gradient colors
   const getRandomGradient = () => {
-    const colors = ['#F5CE64', '#FAAA67', '#F7B0BC', '#BBCBA1'];
+    const colors = ["#F5CE64", "#FAAA67", "#F7B0BC", "#BBCBA1"];
     const color1 = colors[Math.floor(Math.random() * colors.length)];
     let color2 = colors[Math.floor(Math.random() * colors.length)];
     while (color2 === color1) {
@@ -34,42 +35,50 @@ function App() {
   useEffect(() => {
     fetch("https://presho99.github.io/skfoods/foods")
       .then((response) => response.json())
-      .then((data) => { 
-        setFoodsData(data.foodsData)
-        setActiveImageUrl(data.foodsData[0]?.avatar || "")
+      .then((data) => {
+        setFoodsData(data.foodsData);
+        setActiveImageUrl(data.foodsData[0]?.avatar || "");
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   const setRatingBoxColor = () => {
-    setCurrentColor(getRandomColor)
-  }
+    setCurrentColor(getRandomColor);
+  };
 
   useEffect(() => {
-    setActiveImageUrl(foodsData[activeIndex]?.avatar || '')
-    setActiveName(foodsData[activeIndex]?.name || '')
-  }, [activeIndex, foodsData])
-
- 
+    setActiveImageUrl(foodsData[activeIndex]?.avatar || "");
+    setActiveName(foodsData[activeIndex]?.name || "");
+  }, [activeIndex, foodsData]);
 
   return (
     <div className="App">
       <div className="left">
         <div className="top">
-          <Bezier activeImageUrl={activeImageUrl} foodsData={foodsData} activeIndex={activeIndex} activeName={activeName} gradientColors={gradientColors} getRandomGradient={getRandomGradient}/>
+          <Bezier
+            activeImageUrl={activeImageUrl}
+            foodsData={foodsData}
+            activeIndex={activeIndex}
+            activeName={activeName}
+            gradientColors={gradientColors}
+            getRandomGradient={getRandomGradient}
+            transitionTriggered={transitionTriggered}
+          />
           {/* <Curve foodsData={foodsData} activeIndex={activeIndex}/>   */}
         </div>
         <div className="middle">
           <List
             foodsData={foodsData}
             setGradientColors={setGradientColors}
-getRandomGradient={getRandomGradient}
+            getRandomGradient={getRandomGradient}
             activeIndex={activeIndex}
             setActiveIndex={(index) => {
-              setActiveIndex(index)
-              setActiveImageUrl(foodsData[index]?.avatar || "")
+              setActiveIndex(index);
+              setActiveImageUrl(foodsData[index]?.avatar || "");
+              setTransitionTriggered(false)
             }}
             setRatingBoxColor={setRatingBoxColor}
+            setTransitionTriggered={setTransitionTriggered}
             // position={position}
           />
         </div>
@@ -78,7 +87,11 @@ getRandomGradient={getRandomGradient}
         </div>
       </div>
       <div className="right">
-        <Review activeIndex={activeIndex} foodsData={foodsData} currentColor={currentColor}/>
+        <Review
+          activeIndex={activeIndex}
+          foodsData={foodsData}
+          currentColor={currentColor}
+        />
       </div>
     </div>
   );

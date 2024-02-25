@@ -4,11 +4,17 @@ import { faHome, faPlay } from "@fortawesome/free-solid-svg-icons";
 import trial from "../assets/try.webp";
 import "../components/Bezier.css";
 
-function Bezier({ activeImageUrl, foodsData, activeIndex, activeName, gradientColors }) {
+function Bezier({
+  activeImageUrl,
+  foodsData,
+  activeIndex,
+  activeName,
+  gradientColors,
+  transitionTriggered,
+}) {
   const canvasRef = useRef(null);
   // const imageRef = useRef(null)
   const position = useRef(0);
-  
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -17,19 +23,24 @@ function Bezier({ activeImageUrl, foodsData, activeIndex, activeName, gradientCo
     // Control points
     const p0 = { x: 0, y: 50 }; // Starting point
     const p1 = { x: 100, y: 50 }; // First control point
-    const p2 = { x: 400, y: 50 }; // Second control point
-    const p3 = { x: 400, y: 450 }; // Ending point
+    const p2 = { x: 450, y: 50 }; // Second control point
+    const p3 = { x: 450, y: 450 }; // Ending point
 
     // Set background color
     ctx.fillStyle = "#cdcdcd";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Draw bezier curve
-    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    const gradient = ctx.createLinearGradient(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
     gradient.addColorStop(0, gradientColors[0]);
     gradient.addColorStop(1, gradientColors[1]);
     ctx.strokeStyle = gradient;
-    ctx.lineWidth = 105; // Adjust line width for a thicker curve
+    ctx.lineWidth = 195; // Adjust line width for a thicker curve
     ctx.beginPath();
     ctx.moveTo(p0.x, p0.y);
     ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
@@ -49,15 +60,17 @@ function Bezier({ activeImageUrl, foodsData, activeIndex, activeName, gradientCo
         ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
         ctx.stroke();
 
+     
+
         // Calculate the position of image along the curve
         const t = position.current / 1000;
         const x = calculateBezier(t, p0.x, p1.x, p2.x, p3.x);
         const y = calculateBezier(t, p0.y, p1.y, p2.y, p3.y);
 
         // Draw the image at the calculated position
-        ctx.drawImage(image, x + 5, y - 65, 300, 300);
+        ctx.drawImage(image, x - 100, y - 65, 300, 300);
 
-        position.current += 19;
+        position.current += 15;
 
         if (position.current <= 500) {
           requestAnimationFrame(moveImage);
@@ -68,7 +81,7 @@ function Bezier({ activeImageUrl, foodsData, activeIndex, activeName, gradientCo
       moveImage();
     };
     // setActiveName(foodsData[activeIndex]?.name || '')
-  }, [activeImageUrl, gradientColors]);
+  }, [activeImageUrl, gradientColors, transitionTriggered]);
 
   const calculateBezier = (t, p0, p1, p2, p3) => {
     return (
@@ -104,7 +117,12 @@ function Bezier({ activeImageUrl, foodsData, activeIndex, activeName, gradientCo
 
   return (
     <div className="bezier-container">
-      <canvas ref={canvasRef} width={600} height={400} className="canvas-transition"/>
+      <canvas
+        ref={canvasRef}
+        width={600}
+        height={400}
+        className="canvas-transition"
+      />
       <div className="bezier-name">
         {formatActiveName(activeName)}
         <div className="bezier-icons">
